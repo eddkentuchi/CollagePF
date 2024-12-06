@@ -1,35 +1,64 @@
 import Layout from "../../Components/Layout"
-import escuela from '../../assets/escuela-completa.jpg'; 
-import mural from '../../assets/mural.jpg'; 
+import escuela from '../../assets/escuela-completa.jpg';
+import { useRef } from "react"
+import mural from '../../assets/mural.jpg';
+
 function Home() {
+  const svgRef = useRef(null);
   return (
       <Layout>
       <header 
         className="bg-indigo-900 w-full h-screen -mt-20 flex justify-center items-center ">   
           <div 
           style={{ backgroundImage: `url(${escuela})` }}
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed opacity-80 blur-sm z-0"/>
-          <div className="flex flex-col md:flex-row items-center z-10">   
-            <div  className="md:w-1/2 md:mb-0"> 
-              <img src={mural} 
-              alt="Imagen de niños felices en el Colegio Pedagogía Freireana" 
-              className="rounded-lg shadow-lg w-8/12 h-max  justify-self-center" /> 
-            </div>
-            <div className="md:w-1/2 text-center md:text-left ">
-              <h2 className="text-3xl font-bold mb-4 w-8/12 justify-self-center">
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed opacity-80 blur-sm z-0"/>    
+            <div className="z-10 w-3/4 text-left h-1/3 md:h-1/2 flex flex-col justify-around md:w-2/3 ">
+            <svg className="absolute left-[10%] md:left-[14%] top-[30%]  md:top-[20%] w-[60%] md:w-[40%] lg:w-[35%] h-[50%] md:h-[65%] z-[-1]"> 
+              <rect 
+                width="99%" height="99%" 
+                className="fill-transparent opacity-60 stroke-yellow-600 stroke-2" 
+              />
+            </svg>
+
+              <h2 className="text-4xl text-white font-bold mb-4 justify-self-left md:text-5xl lg:text-6xl md:w-10/12">
               Formamos personas competitivas y humanas
               </h2>
-              <p className="text-lg mb-6 w-8/12 justify-self-center">
+              <p className="text-base text-justify text-white mb-6 justify-self-left w-10/12 md:text-lg md:w-7/12 lg:text-left">
               En el Colegio Pedagogía Freireana promovemos un ambiente de equidad y tolerancia que favorece la adquisición de aprendizajes significativos.
               </p>
-              <div className= " w-8/12 justify-self-center">
+              <div className= "justify-self-left ">
               <a href="#contacto" 
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
-                Contáctanos
+              className=" flex flex-row w-min hover:underline hover:underline-offset-4 text-white font-bold  pr-5 rounded"
+              onMouseEnter={() => {
+                if (svgRef.current) {
+                    svgRef.current.classList.add('translate-x-2');
+                }
+              }}
+              onMouseLeave={() => {
+                  if (svgRef.current) {
+                      svgRef.current.classList.remove('translate-x-2');
+                  }
+              }}>
+                Contáctanos 
+                <svg 
+                  ref={svgRef}
+                  className="-mr-1 h-5 w-5 transition-transform duration-300 ease-in-out transform"
+                  viewBox="0 0 20 20" 
+                  fill="none"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  aria-hidden="true" >
+                  <path   d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
               </a>
               </div>
             </div>
-          </div>
+            {/*<div  className="md:w-1/2 md:mb-0">  
+              <img src={mural}  
+                alt="Imagen de niños felices en el Colegio Pedagogía Freireana" 
+                className="rounded-lg shadow-lg w-8/12 h-max  justify-self-center" /> 
+             </div> */}
+        
         
       </header>
 
