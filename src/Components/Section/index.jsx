@@ -1,8 +1,8 @@
-const Layout =({children}) =>{
+const Section =({idref,children}) =>{
     return(
-        <div className="flex flex-col mt-20 items-center">
+        <section id={idref} className="bg-slate-50 pb-8 pt-24 md:px-12 lg:px-24 w-full h-screen">
             {children}
-        </div>
+        </section>
     )
 }
-export default Layout
+export default Section
